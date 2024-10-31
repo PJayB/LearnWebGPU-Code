@@ -1,0 +1,6 @@
+[submodule "xplat-game-cmake-utils"]
+	path = xplat-game-cmake-utils
+	url = git@github.com:PJayB/xplat-game-cmake-utils.git
+[submodule "cmake"]
+	path = cmake
+	url = git@github.com:PJayB/xplat-game-cmake-utils.git
