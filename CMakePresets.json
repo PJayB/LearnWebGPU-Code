@@ -1,0 +1,116 @@
+{
+    "version": 3,
+    "cmakeMinimumRequired": {
+      "major": 3,
+      "minor": 22,
+      "patch": 0
+    },
+    "configurePresets": [
+        {
+            "name": "x86_64-w64-mingw32",
+            "displayName": "x86_64-w64-mingw32",
+            "description": "x64 Mingw Ninja",
+            "generator": "Ninja",
+            "binaryDir": "${sourceDir}/build/x86_64-w64-mingw32",
+            "installDir": "${sourceDir}/install/x86_64-w64-mingw32",
+            "toolchainFile": "${sourceDir}/cmake/arch/x86_64-w64-mingw32-gcc.cmake",
+            "cacheVariables": {
+                "CMAKE_C_FLAGS": "$env{CMAKE_C_FLAGS} -Wall -Werror -mwindows",
+                "CMAKE_C_FLAGS_DEBUG": "$env{CMAKE_C_FLAGS} -D_DEBUG -DDEBUG -O0 -g",
+                "CMAKE_CXX_FLAGS": "$env{CMAKE_CXX_FLAGS} -Wall -mwindows",
+                "CMAKE_CXX_FLAGS_DEBUG": "$env{CMAKE_CXX_FLAGS} -D_DEBUG -DDEBUG -O0 -g",
+                "CMAKE_LINK_FLAGS": "$env{CMAKE_LINK_FLAGS}",
+                "WEBGPU_BACKEND": "WGPU",
+                "ARCH": "x86_64" // works around a bug in WebGPU-distribution
+            }
+        },
+        {
+            "name": "x86_64-linux-gnu",
+            "displayName": "x86_64-linux-gnu",
+            "description": "x64 Linux Ninja",
+            "generator": "Ninja",
+            "binaryDir": "${sourceDir}/build/x86_64-linux-gnu",
+            "installDir": "${sourceDir}/install/x86_64-linux-gnu",
+            "toolchainFile": "${sourceDir}/cmake/arch/x86_64-linux-gnu-gcc.cmake",
+            "cacheVariables": {
+                "CMAKE_C_FLAGS": "$env{CMAKE_C_FLAGS} -Wall -Werror",
+                "CMAKE_C_FLAGS_DEBUG": "$env{CMAKE_C_FLAGS} -D_DEBUG -DDEBUG -O0 -g",
+                "CMAKE_CXX_FLAGS": "$env{CMAKE_CXX_FLAGS} -Wall",
+                "CMAKE_CXX_FLAGS_DEBUG": "$env{CMAKE_CXX_FLAGS} -D_DEBUG -DDEBUG -O0 -g",
+                "WEBGPU_BACKEND": "WGPU_STATIC"
+            }
+        },
+        {
+            "name": "aarch64-linux-gnu",
+            "displayName": "aarch64-linux-gnu",
+            "description": "x64 Linux Ninja",
+            "generator": "Ninja",
+            "binaryDir": "${sourceDir}/build/aarch64-linux-gnu",
+            "installDir": "${sourceDir}/install/aarch64-linux-gnu",
+            "toolchainFile": "${sourceDir}/cmake/arch/aarch64-linux-gnu-gcc.cmake",
+            "cacheVariables": {
+                "CMAKE_C_FLAGS": "$env{CMAKE_C_FLAGS} -Wall -Werror",
+                "CMAKE_C_FLAGS_DEBUG": "$env{CMAKE_C_FLAGS} -D_DEBUG -DDEBUG -O0 -g",
+                "CMAKE_CXX_FLAGS": "$env{CMAKE_CXX_FLAGS} -Wall",
+                "CMAKE_CXX_FLAGS_DEBUG": "$env{CMAKE_CXX_FLAGS} -D_DEBUG -DDEBUG -O0 -g",
+                "WEBGPU_BACKEND": "WGPU_STATIC",
+                "ARCH": "aarch64" // works around a bug in WebGPU-distribution
+            }
+        },
+        {
+            "name": "x86_64-windows-vs2022",
+            "displayName": "Visual Studio 2022",
+            "description": "Visual Studio 2022 Project Generator",
+            "generator": "Visual Studio 17 2022",
+            "binaryDir": "${sourceDir}/build/x86_64-windows-vs2022",
+            "installDir": "${sourceDir}/install/x86_64-windows-vs2022",
+            "cacheVariables": {
+                "CMAKE_CXX_FLAGS": "$env{CMAKE_CXX_FLAGS} /Zi /EHsc",
+                "CMAKE_CXX_FLAGS_DEBUG": "$env{CMAKE_CXX_FLAGS} /D_DEBUG /DDEBUG /Od",
+                "WEBGPU_BACKEND": "WGPU_STATIC"
+            }
+        },
+        {
+            "name": "wasm32-unknown-emscripten",
+            "displayName": "wasm32-unknown-emscripten",
+            "description": "Emscripten Ninja",
+            "generator": "Ninja",
+            "binaryDir": "${sourceDir}/build/wasm32-unknown-emscripten",
+            "installDir": "${sourceDir}/install/wasm32-unknown-emscripten",
+            "cacheVariables": {
+                "CMAKE_C_FLAGS": "$env{CMAKE_C_FLAGS} -Wall -Werror -O3",
+                "CMAKE_C_FLAGS_DEBUG": "$env{CMAKE_C_FLAGS} -D_DEBUG -DDEBUG -O0 -g",
+                "CMAKE_CXX_FLAGS": "$env{CMAKE_CXX_FLAGS} -Wall -O3",
+                "CMAKE_CXX_FLAGS_DEBUG": "$env{CMAKE_CXX_FLAGS} -D_DEBUG -DDEBUG -O0 -g",
+                "WEBGPU_BACKEND": "EMSCRIPTEN"
+            }
+        }
+    ],
+    "buildPresets": [
+        {
+            "name": "x86_64-w64-mingw32",
+            "displayName": "x86_64-w64-mingw32",
+            "configurePreset": "x86_64-w64-mingw32"
+        },
+        {
+            "name": "x86_64-linux-gnu",
+            "displayName": "x86_64-linux-gnu",
+            "configurePreset": "x86_64-linux-gnu"
+        },
+        {
+            "name": "aarch64-linux-gnu",
+            "displayName": "aarch64-linux-gnu",
+            "configurePreset": "aarch64-linux-gnu"
+        },
+        {
+            "name": "x86_64-windows-vs2022",
+            "displayName": "x86_64-windows-vs2022",
+            "configurePreset": "x86_64-windows-vs2022"
+        },
+        {
+            "name": "wasm32-unknown-emscripten",
+            "displayName": "wasm32-unknown-emscripten",
+            "configurePreset": "wasm32-unknown-emscripten"
+        }
+    ]
+}

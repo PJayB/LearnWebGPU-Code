@@ -79,4 +79,15 @@ if (EMSCRIPTEN)
 
 	# Generate a full web page rather than a simple WebAssembly module
 	set_target_properties(App PROPERTIES SUFFIX ".html")
+
+	target_link_options(App INTERFACE
+		"-sUSE_GLFW=3"
+		"-sUSE_WEBGPU=1"
+		"-sEXIT_RUNTIME=1"
+		"-sMAIN_MODULE=2"
+	)
+endif()
+
+if (MINGW)
+    mingw_copy_dlls(App)
 endif()
