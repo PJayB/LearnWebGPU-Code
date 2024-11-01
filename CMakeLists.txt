@@ -48,7 +48,10 @@ endif()
 if (EMSCRIPTEN)
 	set_target_properties(App PROPERTIES SUFFIX ".html")
 
+	set(EM_SOURCE_MAP_BASE "http://localhost:8000/")
 	target_link_options(App PRIVATE
+		"-gsource-map"
+		"--source-map-base" "${EM_SOURCE_MAP_BASE}"
 		"-sUSE_GLFW=3"
 		"-sUSE_WEBGPU=1"
 		"-sEXIT_RUNTIME=1"
