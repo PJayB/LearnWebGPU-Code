@@ -191,10 +191,8 @@ void Application::MainLoop() {
 	WGPUCommandBuffer command = wgpuCommandEncoderFinish(encoder, &cmdBufferDescriptor);
 	wgpuCommandEncoderRelease(encoder);
 
-	std::cout << "Submitting command..." << std::endl;
 	wgpuQueueSubmit(queue, 1, &command);
 	wgpuCommandBufferRelease(command);
-	std::cout << "Command submitted." << std::endl;
 
 	// At the end of the frame
 	wgpuTextureViewRelease(targetView);
