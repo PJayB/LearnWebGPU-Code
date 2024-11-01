@@ -15,6 +15,7 @@ cmake_cmd=( cmake )
 #do_build x86_64-windows-vs2022 --config Debug
 do_build aarch64-linux-gnu
 do_build x86_64-linux-gnu
+do_build x86_64-linux-gnu-dawn
 do_build x86_64-w64-mingw32
 
 cmake_cmd=( emcmake cmake -DCMAKE_BUILD_TYPE=Debug )
